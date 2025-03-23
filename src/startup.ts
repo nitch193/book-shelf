@@ -14,7 +14,7 @@ export const initializeGlobalVariable = async () => {
           from: "inline",
           config: {
             serverMode: "full",
-            url: "/example.sqlite3",
+            url: "/book-shelf/example.sqlite3",
             requestChunkSize: 4096,
           },
         },
