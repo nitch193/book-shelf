@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -65,4 +70,16 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.books-grid {
+  columns: 4;
+  gap: 4px;
+}
+.card {
+  text-align: center;
+  margin-bottom: 4px;
+  max-width: 250px;
+  min-height: 400px;
+  border: 2px solid #535bf2 ;
 }
