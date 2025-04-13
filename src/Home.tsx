@@ -1,45 +1,43 @@
 import { useEffect, useState } from "react";
-import { WorkerHttpvfs } from "sql.js-httpvfs";
-import Logo from "./assets/books-and-people-svgrepo-com.svg";
-import SearchIcon from "./assets/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import Header from "./Header";
+import Login from "./Login";
+import BooksGrid from "./BooksGrid";
 
-const Home = (db: { db: WorkerHttpvfs }) => {
-  const [data, setData] = useState<unknown[]>([]);
+const Home = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    // Simulate login
+    setIsAuthenticated(true);
+    localStorage.setItem("token", "your_token"); // Store token
+    navigate("/"); // Redirect to dashboard
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("token"); // Remove token
+    navigate("/login"); // Redirect to login
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await db.db.db.query("select * from books limit 100");
-      console.log("result", result);
-      setData(result);
-    };
-    fetchData();
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
   }, []);
   return (
     <>
-      <div className="banner">
-        <Logo />
-        <h2 className="page_name">Book-shelf</h2>
-        <div className="page_actions">
-          <span>
-            <SearchIcon />
-          </span>
-          <h2>About</h2>
-        </div>
-      </div>
-      <div className="books-grid">
-        {data.length ? (
-          data.map((v: any) => {
-            return (
-              <div key={v.id} className="card">
-                <img alt={v.title} src={v.image_url} />
-                <h3>{v.title}</h3>
-                <h5>{v.authors}</h5>
-              </div>
-            );
-          })
-        ) : (
-          <>Home</>
-        )}
-      </div>
+      <Header />
+      <Routes>
+        <Route
+          path="/login"
+          element={isAuthenticated ? <Navigate to="/" /> : <Login />}
+        />
+        <Route path="/" element={isAuthenticated ? <BooksGrid /> : <Login />} />
+      </Routes>
     </>
   );
 };

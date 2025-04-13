@@ -29,3 +29,5 @@ export const initializeGlobalVariable = async () => {
 export const useGlobalVariable = () => {
   return globalVarPromise;
 };
+const myInitObject: { db: null | WorkerHttpvfs } = { db: null };
+export default myInitObject;
