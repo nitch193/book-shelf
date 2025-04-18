@@ -3,7 +3,9 @@ import SearchIcon from "./assets/search_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.s
 const Header = () => {
   return (
     <div className="banner">
-      <Logo />
+      <div className="logo-div">
+        <Logo />
+      </div>
       <h2 className="page_name">Book-shelf</h2>
       <div className="page_actions">
         <span>

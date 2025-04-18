@@ -4,14 +4,14 @@
   box-sizing: border-box;
 }
 :root {
+  font-size: 100%;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
+  line-height: inherit;
+  word-spacing: inherit;
+  letter-spacing: inherit;
   color-scheme: light dark;
   background-color: #c7d1cc;
   color: #181B1A;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

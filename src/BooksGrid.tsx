@@ -6,7 +6,7 @@ const BooksGrid = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await myInitObject.db?.db.query(
-        "select * from books limit 100"
+        "select * from library limit 100"
       );
       setData(result);
     };

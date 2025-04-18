@@ -8,6 +8,5 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter basename="book-shelf">
       <App />
     </BrowserRouter>
-    ,{/* <App /> */}
   </StrictMode>
 );
